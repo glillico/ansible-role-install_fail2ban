@@ -1,0 +1,4 @@
+---
+# defaults file for install_fail2ban
+
+software_install_fail2ban_epel_installed: true

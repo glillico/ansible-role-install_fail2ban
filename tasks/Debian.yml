@@ -1,0 +1,7 @@
+---
+# Debian tasks file for install_fail2ban
+
+- name: Install fail2ban package.
+  package:
+    name: fail2ban
+    state: present
