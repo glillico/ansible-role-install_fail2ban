@@ -2,10 +2,15 @@
 # tasks file for install_fail2ban
 
 - name: Include OS-specific tasks.
-  include_tasks: "{{ ansible_os_family }}.yml"
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml'
+    - '{{ ansible_os_family }}.yml'
 
-- name: Ensure fail2ban is stated and enabled to start on boot.
+- name: Ensure fail2ban is started and enabled to start on boot.
   service:
     name: fail2ban
     state: started
-    enabled: yes
+    enabled: true
