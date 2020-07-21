@@ -3,7 +3,31 @@
 
 - name: Verify
   hosts: all
+
   tasks:
-  - name: Example assertion
+  - name: Check the 'fail2ban' package status.
+    package:
+      name: fail2ban
+      state: present
+    check_mode: yes
+    register: pkg_status
+
+  - name: Test that the 'fail2ban' package is installed.
     assert:
-      that: true
+      that:
+        - not pkg_status.changed
+
+  - name: Retrieve the file information for '/var/log/auth.log'.
+    stat:
+      path: '/var/log/auth.log'
+    register: remote_file
+
+  - name: Test that the '/var/log/auth.log' file was created correctly.
+    assert:
+      that:
+        - remote_file.stat.exists
+        - remote_file.stat.isreg
+        - remote_file.stat.path == '/var/log/auth.log'
+        - remote_file.stat.mode == '0600'
+        - remote_file.stat.pw_name == 'root'
+        - remote_file.stat.gr_name == 'root'
