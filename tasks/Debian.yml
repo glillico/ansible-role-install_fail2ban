@@ -5,3 +5,4 @@
   package:
     name: fail2ban
     state: present
+    install_recommends: no
