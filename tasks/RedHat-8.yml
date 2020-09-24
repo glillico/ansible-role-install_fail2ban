@@ -1,0 +1,14 @@
+---
+# RedHat 8 tasks file for install_fail2ban
+
+- name: Ensure the EPEL repository is installed.
+  package:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    state: present
+  when: software_install_fail2ban_epel_installed | bool
+
+- name: Install fail2ban package.
+  package:
+    name: fail2ban
+    state: present
+    enablerepo: epel

@@ -1,9 +1,9 @@
 ---
-# RedHat tasks file for install_fail2ban
+# Amazon tasks file for install_fail2ban
 
 - name: Ensure the EPEL repository is installed.
   package:
-    name: epel-release
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     state: present
   when: software_install_fail2ban_epel_installed | bool
 
