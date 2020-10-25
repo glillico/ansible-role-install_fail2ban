@@ -1,6 +1,6 @@
 # Ansible Role : install_fail2ban
 
-[![Build Status](https://github.com/glillico/ansible-role-install_fail2ban/workflows/build/badge.svg)](https://github.com/glillico/ansible-role-install_fail2ban/actions?query=workflow%3Abuild)
+[![CI](https://github.com/glillico/ansible-role-install_fail2ban/workflows/CI/badge.svg)](https://github.com/glillico/ansible-role-install_fail2ban/actions?query=workflow%3ACI)
 
 Install the fail2ban package.
 
