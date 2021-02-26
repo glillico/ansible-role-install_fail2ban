@@ -1,5 +1,6 @@
 galaxy_info:
-  author: Graham Lillico
+  role_name: install_fail2ban
+  author: glillico
   description: Install the fail2ban package on an ansible node.
   license: license (MIT)
   min_ansible_version: 2.4
