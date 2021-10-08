@@ -12,7 +12,5 @@
         owner: root
         mode: 0600
 
-  tasks:
-    - name: "Include ansible-role-install_fail2ban"
-      include_role:
-        name: "ansible-role-install_fail2ban"
+  roles:
+    - role: glillico.install_fail2ban
