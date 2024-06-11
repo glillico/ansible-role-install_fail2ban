@@ -1,0 +1,26 @@
+---
+# Ubuntu 24.04 tasks file for install_fail2ban
+# This is a temporary fix for https://github.com/fail2ban/fail2ban/issues/3754,
+# Currenlty waiting for https://bugs.launchpad.net/ubuntu/+source/fail2ban/+bug/2055114
+
+- name: Install required package.
+  package:
+    name:
+      - dirmngr
+      - gpg-agent
+      - software-properties-common
+    state: present
+    install_recommends: no
+
+- name: Add PPA repository
+  apt_repository:
+    repo: 'ppa:mfo/lp2055114'
+    update_cache: true
+    validate_certs: true
+
+- name: Install fail2ban package.
+  package:
+    name: fail2ban
+    state: present
+    install_recommends: no
+
